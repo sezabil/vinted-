@@ -10,3 +10,10 @@
   margin: 0 auto;
   background-color: lavender;
 }
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  width: 200px;
+}

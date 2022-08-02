@@ -3,15 +3,21 @@ import "./App.scss";
 import Cookies from "js-cookie";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 //pages
 import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
+
+const stripePromise = loadStripe("");
 
 //components
-import Header from "./components/Header/Header";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -44,6 +50,15 @@ function App() {
           <Route path="/offer/:offerId" element={<Offer />} />
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/signup" element={<Signup setUser={setUser} />} />
+          <Route path="/publish" element={<Publish token={token} />} />
+          <Route
+            path="/Payment"
+            element={
+              <Elements stripe={stripePromise}>
+                <Payment />
+              </Elements>
+            }
+          />
         </Routes>
       </Router>
     </div>

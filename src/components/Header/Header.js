@@ -6,6 +6,8 @@ const Header = ({ token, setUser }) => {
   return (
     <header className="header-component ">
       <p>My Header</p>
+      <Link to="/publish">Publier une offre</Link>
+      <br />
       {token === null ? (
         <>
           <Link to="/signup">S'inscrire</Link>
@@ -22,7 +24,6 @@ const Header = ({ token, setUser }) => {
           Se déconnecter
         </button>
       )}
-
       <br />
     </header>
   );
